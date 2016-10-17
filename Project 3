@@ -35,19 +35,16 @@
             look();
          }
          
-         //
          // Command Button handler for input by user.
-         // 1) trim off extra spaces
-         // 2) make sure all charaters are lower case
-         // 3) Evaluate if north, south, east or west was entered or something else
-         // 4) if direction was typed in, starting at position 0 on the line, grab first character
-         // 5) Then trigger the button function that handles the movement to the locations (reuse functions)
-         // NOTE: Script will take user input and validate it is a direction.
-         // I have scripted this to allow for entry of more than just a sinlge letter  (N, W, E, S, n, e ,w, s).
+         // all charaters are lower case
+         // Evaluate if north, south, east or west was entered or something else
+         // if direction was typed in, starting at position 0 on the line, grab first character
+         // Trigger the button function that handles the movement to the locations (reuse functions)
+         // *Script will take user input and validate it is a direction.
+         // (N, W, E, S, n, e ,w, s).
          // it will only validate to these single letter directions.
-         // Customer indicated a need for only N, S, E, W, n, s, e, w
-         //  Flexability added for the user
-         //
+         // A need for only N, S, E, W, n, s, e, w
+         
          function buttonGo() {
              var command = document.getElementById("txtCommand").value;
                  command = command.trim();
