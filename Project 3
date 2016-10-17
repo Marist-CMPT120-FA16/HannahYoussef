@@ -278,11 +278,11 @@
                   points = points + 5;
                   hasVisitedLoc4 = true;
 
-            } else if ((! hasVisitedLoc4) && (currentLoc === 5)) {            
+            } else if ((! hasVisitedLoc5) && (currentLoc === 5)) {            
                   points = points + 5;
                   hasVisitedLoc4 = true;
 
-            } else if ((! hasVisitedLoc4) && (currentLoc === 6)) {            
+            } else if ((! hasVisitedLoc6) && (currentLoc === 6)) {            
                   points = points + 5;
                   hasVisitedLoc4 = true;
 
@@ -295,13 +295,15 @@
 
          function displayMessage(msg) {
             var target = document.getElementById("taMain");
-            target.value = msg + "\n\n\n" + target.value;
+            target.value = msg + "\n\n" + target.value;
 
          }
 
       </script>
-
    </head>
+
+   <!--beginning of html/css formatting (colors, fonts, etc.)-->
+
    <body onload="init();" style = "background-color: #ffe6ff">
 
     <p style = "
@@ -319,7 +321,7 @@
         font-family: cursive;
         text-decoration: underline;
         ">
-          North, South, East & West</h1>
+          Political Navigation Game!</h1>
 
       <p style = "
           color: #862d59;
@@ -327,9 +329,9 @@
           font-family: Georgia;
           text-align: center;
           ">
-        <b><big>Welcome to my game!</big></b> This game tests your ability to navigate about a fixed point in the center. 
+        <b><big>Welcome to my game!</big></b> This game tests your ability to navigate about a fixed point in the center. The scene is set at a debate between presidential candidates <b>Donald Trump</b> and <b>Hillary Clinton</b>.
       </br>
-        <b><big>Directions:</big></b> when you first start the game, you begin in the <b>middle</b> of the board. 
+        <b><big>Directions:</big></b> when you first start the game, you begin in the <b>center</b> of the stage. 
       </br>
         If you click the buttons <b>"North", "South", "East", or "West",</b> they will move you one space in either direction. 
       </br>
@@ -371,12 +373,22 @@
       <!--A box for user to type in, a description, and a button to submit the text named "Go"-->
 
        <br>
+       <div style="font-family: verdana;
+                  font-weight: bold;
+                  color: #ea2369;
+                  ">
        Enter Direction:
+     </div>
        <input type="text"
               id = "txtCommand"
-              name="txtCommand">
+              name="txtCommand"
+              style="background-color: rgba(71, 249, 127, 0.65);
+              border-width: 3px;
+              border-color: #ea2369;
+              width: 295px;
+              ">
 
-       <input type="button"
+      <input type="button"
               value="Go"
               onclick="buttonGo();"
               style="
@@ -385,10 +397,12 @@
               color: #ea2369;
               font-family: verdana;
               font-size: 15px;
+              font-weight: bold;
               border-color: #ea2369;
               width: 70px;
             "/>
 
+      <br>
       <!--North, South, East and West buttons for user to press -->
 
         <input type="button" 
