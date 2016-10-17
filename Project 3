@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<!--
+  Hannah Youssef
+  October 17, 2016
+  Project 3
+-->
+<html>
+   <head>
+    <!-- Browser Tab Title -->
+      <title>
+         Hannah's Political Navigation Game
+      </title>
+      <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+      <script type="text/javascript">
+         
+         // List of variables for the game
+
+         var currentLoc = 0;
+         var points = 0;
+         var navigationErrorCount = 0;
+         var funnyResponse = 5;
+         
+         
+         var hasVisitedLoc0 = false;
+         var hasVisitedLoc1 = false;
+         var hasVisitedLoc2 = false;
+         var hasVisitedLoc3 = false;
+         var hasVisitedLoc4 = false;
+         var hasVisitedLoc5 = false;
+         var hasVisitedLoc6 = false;
+                  
+         // Initialize function for executing the "Look" function to see where the user is
+
+         function init() {
+            look();
+         }
+         
+         //
+         // Command Button handler for input by user.
+         // 1) trim off extra spaces
+         // 2) make sure all charaters are lower case
+         // 3) Evaluate if north, south, east or west was entered or something else
+         // 4) if direction was typed in, starting at position 0 on the line, grab first character
+         // 5) Then trigger the button function that handles the movement to the locations (reuse functions)
+         // NOTE: Script will take user input and validate it is a direction.
+         // I have scripted this to allow for entry of more than just a sinlge letter  (N, W, E, S, n, e ,w, s).
+         // it will only validate to these single letter directions.
+         // Customer indicated a need for only N, S, E, W, n, s, e, w
+         //  Flexability added for the user
+         //
+         function buttonGo() {
+             var command = document.getElementById("txtCommand").value;
+                 command = command.trim();
+                 command = command.toLowerCase();
+               if (command == "north" || command == "west" || command == "south" || command == "east") {
+                 command = command.substr(0,1);
+                 }
+                    if (command == "n") {
+                      btnNorth_click();
+                  }  else if (command == "s") {
+                         btnSouth_click();
+                    }  else if (command == "w") {
+                          btnWest_click();
+                      }  else if (command == "e") {
+                           btnEast_click();
+                       } else displayMessage("Please try again." +"\n" + "Valid entries are: N, S, E, W, n, s, e, w." 
+                            + "\n" + " or press a directional buttons below")
+                   
+                 /*  Use for testing to ensure txt is processed correctly uncomment next line for to testing
+                     displayMessage(command);   */
+            }
+         
+         // Functions for direction buttons to handle the click action by user
+         // ie: First Action pressing North will bring the user/ player to location 1 from 0
+         // when location is at 4, player moved to location 2.  
+         // Error message is put in text box if no valid location is picked for that button
+               
+               function btnNorth_click() {
+            if (currentLoc === 0) {
+               currentLoc = 1;
+               look();               
+            } else {
+              if (currentLoc === 4) {
+                 currentLoc = 2;
+                 look();  
+               } else {
+                  if (currentLoc === 5){
+                   currentLoc = 3;
+                   look();  
+                 } else {
+                   if (currentLoc === 2){
+                    currentLoc = 6;
+                    look();         
+                  } else {
+                    navigationError(); 
+                }
+               }
+              }
+             }            
+         }
+         function btnSouth_click() {
+            if (currentLoc === 1) {
+               currentLoc = 0;
+               look();
+            } else {
+              if (currentLoc === 2) {
+                 currentLoc = 4;
+                 look();
+              } else {
+               if (currentLoc === 3){
+                 currentLoc = 5;
+                 look();
+               } else {
+                if (currentLoc === 6) {
+                 currentLoc = 2;
+                 look();
+                   } else {
+                 navigationError();               
+                }
+               } 
+              }
+             }
+         }
+         function btnEast_click() {
+            if (currentLoc === 2) {
+               currentLoc = 3;
+               look();
+            } else {
+              if (currentLoc === 5) {
+                 currentLoc = 4;
+                 look();
+               } else {
+                   if (currentLoc === 3) {
+                      currentLoc = 1;
+                      look();
+                 } else {
+                    if (currentLoc === 1) {
+                       currentLoc = 5;
+                       look();
+                     } else {
+                      navigationError(); 
+               }
+              }
+             }
+            }
+         }
+         function btnWest_click() {
+            if (currentLoc === 4) {
+                currentLoc = 5;
+                look();
+             } else {
+               if (currentLoc === 3) {
+               currentLoc = 2;
+               look();
+               } else {
+                 if (currentLoc === 1) {
+                   currentLoc = 3;
+                   look();
+                  } else {
+                    if (currentLoc === 5) {
+                       currentLoc = 1;
+                       look();
+                   } else {
+                     navigationError(); 
+               }
+              }
+             }              
+            }
+         }
+                  
+         //Locations that will be displayed to the user
+         //function "look" is the coordinator of when a location function will be called.
+         //Used with button function and message functions to display the correct & current location to the user
+
+         function look() {
+            var desc = "";
+            switch(currentLoc) {
+               case 0: centerStage();
+                       break;
+               case 1: btwnCand();
+                       break; 
+               case 2: rightAud();
+                       break;
+               case 3: modTable();
+                       break;
+               case 4: leftAud();
+                       break;
+               case 5: trump;
+                       break;
+               case 6: clinton();
+                       break;
+               default: desc = "You can't go that way.";
+            }
+         }
+
+         // Individual functions for each location
+         // displays the current location and the current score to the user.
+
+        function centerStage() {
+            var desc = "You are in the center of the stage."
+            score Eval();
+            desc = desc + "\n" + "Your current score is: " + score;
+            displayMessage(desc);
+        }
+        function btwnCand() {
+            var desc = "You are between the two candidates."
+            score Eval();
+            desc = desc + "\n" + "Your current score is: " + score;
+            displayMessage(desc);
+        }
+        function rightAud() {
+            var desc = "You are in the right side of the audience."
+            score Eval();
+            desc = desc + "\n" + "Your current score is: " + score;
+            displayMessage(desc);
+        }
+        function modTable() {
+            var desc = "You are at the moderator's table."
+            score Eval();
+            desc = desc + "\n" + "Your current score is: " + score;
+            displayMessage(desc);
+        }
+        function leftAud() {
+            var desc = "You are in the left side of the audience."
+            score Eval();
+            desc = desc + "\n" + "Your current score is: " + score;
+            displayMessage(desc);
+        }
+        function trump() {
+            var desc = "You are at Donald Trump's podium."
+            score Eval();
+            desc = desc + "\n" + "Your current score is: " + score;
+            displayMessage(desc);
+        }
+        function clinton() {
+            var desc = "You are at Hillary Clinton's podium."
+            score Eval();
+            desc = desc + "\n" + "Your current score is: " + score;
+            displayMessage(desc);
+        }
+
+        //Function to indicate an error in direction
+        //navigationErrorCount is displayed the first time the user goes in the wrong direction
+        //funnyResponse is displayed after multiple times the user goes in the wrong direction in a row
+        //function is reset
+
+
+         function navigationError() {
+            navigationErrorCount = navigationErrorCount + 1;
+            if (navigationErrorCount < funnyResponse) {
+               displayMessage("You can't go that way.");
+            } else {
+               displayMessage("Secret Service says you can't go any further.");
+            }            
+         }
+
+         //Function to ceck the score to decide if 5 points can be added
+         //Score is calculated and the score is updated if earned
+         //hasVisitedLoc# determines if the user has already visited a location
+         //If they have, no points are added to the score
+
+         function checkScore() {
+            if (! hasVisitedLoc0) {            
+               if (currentLoc === 0) {
+                  points = points + 5;
+                  hasVisitedLoc0 = true;
+               }
+            } else if ((! hasVisitedLoc1) && (currentLoc === 1)) {            
+                  points = points + 5;
+                  hasVisitedLoc1 = true;
+
+            } else if ((! hasVisitedLoc2) && (currentLoc === 2)) {            
+                  points = points + 5;
+                  hasVisitedLoc2 = true;
+
+            } else if ((! hasVisitedLoc3) && (currentLoc === 3)) {            
+                  points = points + 5;
+                  hasVisitedLoc3 = true;
+
+            } else if ((! hasVisitedLoc4) && (currentLoc === 4)) {            
+                  points = points + 5;
+                  hasVisitedLoc4 = true;
+
+            } else if ((! hasVisitedLoc4) && (currentLoc === 5)) {            
+                  points = points + 5;
+                  hasVisitedLoc4 = true;
+
+            } else if ((! hasVisitedLoc4) && (currentLoc === 6)) {            
+                  points = points + 5;
+                  hasVisitedLoc4 = true;
+
+            }            
+         }
+       }
+
+         //Function to display the message, which includes the location and score throughout the game
+         //also include the value of the score
+
+         function displayMessage(msg) {
+            var target = document.getElementById("taMain");
+            target.value = msg + "\n\n" + target.value;
+         }
+      </script>
+
+   </head>
+   <body onload="init();" style = "background-color: #ffe6ff">
+
+    <p style = "
+      color: #e699ff;
+      font-family: verdana;
+      font-size: 30px;
+    ">
+      Hannah Youssef's Game
+    </p>
+
+    <h1 style = "
+        color: #ff0066; 
+        text-align: center; 
+        font-size: 50px; 
+        font-family: cursive;
+        text-decoration: underline;
+        ">
+          North, South, East & West</h1>
+
+      <p style = "
+          color: #862d59;
+          font-size: 15px;
+          font-family: Georgia;
+          text-align: center;
+          ">
+        <b><big>Welcome to my game!</big></b> This game tests your ability to navigate about a fixed point in the center. 
+      </br>
+        <b><big>Directions:</big></b> when you first start the game, you begin in the <b>middle</b> of the board. 
+      </br>
+        If you click the buttons <b>"North", "South", "East", or "West",</b> they will move you one space in either direction. 
+      </br>
+        If you try to click the same direction button twice, then you will <b>not</b> be able to move any farther than you are. 
+      </br>
+        A score will keep track of your progress. <i><mark>Try to beat your high score next time!</mark></i>
+      </p>
+
+
+     <h1 style="
+        color: #33ccff; 
+        font-family: verdana; 
+        font-size: 20px;
+        text-decoration: underline;
+        ">
+         Email Me:
+      </h1>
+       <p style="color: purple;"><strong>For any questions, please click the link below to reach me at my email.</strong></p>
+      <p style="color: purple;">
+      To write to <a style="color: red;" href = "mailto:hannah.youssef1@marist.edu"><strong> Hannah Youssef</strong></a>, click the link and I will return your message as soon as possible.
+       </p>
+
+       <textarea id="taMain" 
+                rows="15" 
+                cols="50" 
+                style="color: rgb(234, 35, 105); 
+                background-color: 
+                rgba(71, 249, 127, 0.65098); 
+                border: 3px solid rgb(234, 35, 105); 
+                font-family: verdana; 
+                font-size: 12px; 
+                margin: 0px; 
+                width: 366px; 
+                height: 225px;">
+      </textarea>
+       
+       <br>
+
+        <input type="button" value="North" onclick="btnNorth_click();" style="
+          background-color: rgba(71, 249, 127, 0.65);
+          border-width: 3px;
+          color: #ea2369;
+          font-family: verdana;
+          font-size: 15px;
+          border-color: #ea2369;
+          width: 70px;
+        ">
+
+       <input type="button" value="South" onclick="btnSouth_click();" style="background-color: rgba(71, 249, 127, 0.65);
+          border-width: 3px;
+          color: #ea2369;
+          font-family: verdana;
+          font-size: 15px;
+          border-color: #ea2369;
+          width: 70px;
+        ">
+
+       <input type="button" value="East" onclick="btnEast_click();" style="    background-color: rgba(71, 249, 127, 0.65);
+          border-width: 3px;
+          color: #ea2369;
+          font-family: verdana;
+          font-size: 15px;
+          border-color: #ea2369;
+          width: 70px;
+        ">
+
+       <input type="button" value="West" onclick="btnWest_click();" style="    background-color: rgba(71, 249, 127, 0.65);
+          border-width: 3px;
+          color: #ea2369;
+          font-family: verdana;
+          font-size: 15px;
+          border-color: #ea2369;
+          width: 70px;
+        ">
+
+  
+  <hr>
+
+    <p>All information on this site is <strong>&copy;
+      Hannah Youssef, 2016.</strong>
+    </p>
+              
+   </body>
+
+</html>
