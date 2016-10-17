@@ -44,7 +44,7 @@
          // (N, W, E, S, n, e ,w, s).
          // it will only validate to these single letter directions.
          // A need for only N, S, E, W, n, s, e, w
-         
+
          function buttonGo() {
              var command = document.getElementById("txtCommand").value;
                  command = command.trim();
@@ -182,7 +182,7 @@
                        break;
                case 4: leftAud();
                        break;
-               case 5: trump;
+               case 5: trump();
                        break;
                case 6: clinton();
                        break;
@@ -295,8 +295,10 @@
 
          function displayMessage(msg) {
             var target = document.getElementById("taMain");
-            target.value = msg + "\n\n" + target.value;
+            target.value = msg + "\n\n\n" + target.value;
+
          }
+
       </script>
 
    </head>
@@ -350,7 +352,7 @@
       To write to <a style="color: red;" href = "mailto:hannah.youssef1@marist.edu"><strong> Hannah Youssef</strong></a>, click the link and I will return your message as soon as possible.
        </p>
 
-       <textarea id="taMain" 
+       <textarea id="taMain"
                 rows="15" 
                 cols="50" 
                 style="color: rgb(234, 35, 105); 
@@ -361,12 +363,38 @@
                 font-size: 12px; 
                 margin: 0px; 
                 width: 366px; 
-                height: 225px;">
-      </textarea>
-       
-       <br>
+                height: 225px;"
+                name="taMain">
 
-        <input type="button" value="North" onclick="btnNorth_click();" style="
+      </textarea>
+    
+      <!--A box for user to type in, a description, and a button to submit the text named "Go"-->
+
+       <br>
+       Enter Direction:
+       <input type="text"
+              id = "txtCommand"
+              name="txtCommand">
+
+       <input type="button"
+              value="Go"
+              onclick="buttonGo();"
+              style="
+              background-color: rgba(71, 249, 127, 0.65);
+              border-width: 3px;
+              color: #ea2369;
+              font-family: verdana;
+              font-size: 15px;
+              border-color: #ea2369;
+              width: 70px;
+            "/>
+
+      <!--North, South, East and West buttons for user to press -->
+
+        <input type="button" 
+          value="North" 
+          onclick="btnNorth_click();" 
+          style="
           background-color: rgba(71, 249, 127, 0.65);
           border-width: 3px;
           color: #ea2369;
@@ -376,7 +404,11 @@
           width: 70px;
         ">
 
-       <input type="button" value="South" onclick="btnSouth_click();" style="background-color: rgba(71, 249, 127, 0.65);
+       <input type="button" 
+          value="South" 
+          onclick="btnSouth_click();" 
+          style="
+          background-color: rgba(71, 249, 127, 0.65);
           border-width: 3px;
           color: #ea2369;
           font-family: verdana;
@@ -385,7 +417,11 @@
           width: 70px;
         ">
 
-       <input type="button" value="East" onclick="btnEast_click();" style="    background-color: rgba(71, 249, 127, 0.65);
+       <input type="button" 
+          value="East" 
+          onclick="btnEast_click();" 
+          style="
+          background-color: rgba(71, 249, 127, 0.65);
           border-width: 3px;
           color: #ea2369;
           font-family: verdana;
@@ -394,7 +430,11 @@
           width: 70px;
         ">
 
-       <input type="button" value="West" onclick="btnWest_click();" style="    background-color: rgba(71, 249, 127, 0.65);
+       <input type="button" 
+          value="West" 
+          onclick="btnWest_click();" 
+          style="
+          background-color: rgba(71, 249, 127, 0.65);
           border-width: 3px;
           color: #ea2369;
           font-family: verdana;
