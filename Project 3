@@ -386,7 +386,10 @@
               border-width: 3px;
               border-color: #ea2369;
               width: 295px;
+              height: 22px;
               ">
+
+      <!--"Go" button-->
 
       <input type="button"
               value="Go"
@@ -400,8 +403,10 @@
               font-weight: bold;
               border-color: #ea2369;
               width: 70px;
+              height: 30px;
             "/>
 
+      <br>
       <br>
       <!--North, South, East and West buttons for user to press -->
 
@@ -416,6 +421,7 @@
           font-size: 15px;
           border-color: #ea2369;
           width: 70px;
+          height: 30px;
         ">
 
        <input type="button" 
@@ -429,6 +435,7 @@
           font-size: 15px;
           border-color: #ea2369;
           width: 70px;
+          height: 30px;
         ">
 
        <input type="button" 
@@ -442,6 +449,7 @@
           font-size: 15px;
           border-color: #ea2369;
           width: 70px;
+          height: 30px;
         ">
 
        <input type="button" 
@@ -455,6 +463,7 @@
           font-size: 15px;
           border-color: #ea2369;
           width: 70px;
+          height: 30px;
         ">
 
   
