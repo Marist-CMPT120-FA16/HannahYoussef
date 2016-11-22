@@ -1,0 +1,293 @@
+<!DOCTYPE HTML>
+<html>
+  <!-- 
+    Hannah Youssef
+    November 21, 2016
+    Project 5
+    final.html
+  -->
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="author"             content="Hannah Youssef" />
+
+<!-- Browser Tab TItle -->
+    <title>Hannah's Political Navigation Game</title>
+
+<!--locations.js file-->
+    <script type="text/javascript" src="locations.js"></script>
+
+<!--navigations.js file-->
+    <script type="text/javascript" src="navigation.js"></script>
+
+<!--game.js file-->
+    <script type="text/javascript" src="game.js"></script>
+
+<!--when enter key is pressed, same function as if the user clicked the "go" button.-->
+    <script>
+    function txtLastname_keypress(e)
+        {
+            // Check for the ENTER key when pressed. Don't recognize anything else.
+            if (e.which === 13)
+            {
+                //If the ENTER key was pressed, call the click event of the button whose id = "btnGo" just as if the user had clicked the button itself.
+                document.getElementById("btnGo").onclick();
+            }            
+        }
+    </script>
+  </head>
+  
+  <body onload="init();" style= "background-color: rgb(229, 255, 204);">
+    <h1 style = "
+        color: rgb(255, 0, 0); 
+        text-align: center; 
+        font-size: 50px; 
+        font-family: cursive;
+        text-decoration: underline;
+        ">Hannah's Political Navigation Game</h1>
+
+    <h2 style = "
+        color: rgb(0, 0, 255); 
+        text-align: center; 
+        font-size: 30px; 
+        font-family: cursive;
+        ">Donald Trump vs. Hillary Clinton</h2>
+
+    <p style = "
+          color: rgb(255, 0, 0);
+          font-size: 15px;
+          font-family: Georgia;
+          text-align: center;
+          ">
+
+        <b><big>Welcome to my game!</big></b> This game tests your ability to navigate around while a presidential debate is going on. The scene is set at a debate between presidential candidates <b>Donald Trump</b> and <b>Hillary Clinton</b>.
+      </br>
+        <b><big>Directions:</big></b> when you first start the game, you begin in the <b>center</b> of the stage, also known as Location 0.
+      </br>
+        If you click the buttons <b>"North", "South", "East", or "West",</b> they will move you one space in either direction. You can also type in the command line the same commands as the buttons show. You may press the "Help" button at any time for assistance.
+      </br>
+        If you try to click the same direction button twice, then you will <b>not</b> be able to move any farther than you are. 
+      </br>
+        A score will keep track of your progress. Press "Score Chart" at anytime to see what score you have.
+      </br>
+        If you click the "Inventory" button, you will be able to see all of the items you have gathered throughout the game.
+      </br>
+        <i><mark>Try to beat your high score next time and have fun!</mark></i>
+      </p>
+
+
+    <textarea id="taGame" 
+              name="taMain"
+              rows="15" 
+              cols="50"
+              style="color: rgb(255, 0, 0); 
+                      background-color: 
+                      rgb(153, 204, 255); 
+                      border: 3px solid rgb(255, 0, 0); 
+                      font-family: verdana; 
+                      font-size: 12px; 
+                      margin: 0px; 
+                      width: 792px; 
+                      height: 300px;
+                      display: block;
+                      margin-left: auto;
+                      margin-right: auto;">
+    </textarea>
+    
+    </br>
+
+<!--Command bar for the user to enter text-->
+    <input type="text" 
+           id="txtCommand" 
+           placeholder="Enter your command here" 
+           onkeypress="txtLastname_keypress(event);"
+           style="background-color: rgb(153, 204, 255);
+                  border-width: 3px;
+                  border-color: rgb(255, 0, 0);
+                  width: 295px;
+                  height: 22px;
+              ">
+
+<!--"Go" button. When clicked, performs the action typed in the command bar.-->
+    <input style="
+              background-color: rgb(153, 204, 255);
+              border-width: 3px;
+              color: rgb(255, 0, 0);
+              font-family: verdana;
+              font-size: 15px;
+              font-weight: bold;
+              border-color: rgb(255, 0, 0);
+              width: 70px;
+              height: 30px;"
+           type="button" 
+           id="btnGo" 
+           value="Go" 
+           onclick="btn_go();
+           "/>
+    
+  </br>
+</br>
+
+<!--North button. When clicked, moves the user one space to the south.-->
+    <input type="button" 
+           id="btnNorth" 
+           value="North" 
+           onclick="btn_command(north);"
+           style="
+            background-color: rgb(153, 204, 255);
+            border-width: 3px;
+            color: rgb(255, 0, 0);
+            font-family: verdana;
+            font-size: 15px;
+            border-color: rgb(255, 0, 0);
+            width: 70px;
+            height: 30px;
+            font-weight: bold;"/>
+
+<!--South button. When clicked, moves the user one space to the south-->
+    <input type="button" 
+           id="btnSouth" 
+           value="South" 
+           onclick="btn_command(south);"
+           style="
+            background-color: rgb(153, 204, 255);
+            border-width: 3px;
+            color: rgb(255, 0, 0);
+            font-family: verdana;
+            font-size: 15px;
+            border-color: rgb(255, 0, 0);
+            width: 70px;
+            height: 30px;
+            font-weight: bold;"/>
+
+<!--West button. When clicked, moves the user one space to the west.-->
+    <input type="button" 
+           id="btnWest" 
+           value="West" 
+           onclick="btn_command(west);"
+           style="
+            background-color: rgb(153, 204, 255);
+            border-width: 3px;
+            color: rgb(255, 0, 0);
+            font-family: verdana;
+            font-size: 15px;
+            border-color: rgb(255, 0, 0);
+            width: 70px;
+            height: 30px;
+            font-weight: bold;"/>
+
+<!--East button. When clicked, moves the user one space to the east.-->
+    <input type="button" 
+           id="btnEast" 
+           value="East" 
+           onclick="btn_command(east);"
+           style="
+            background-color: rgb(153, 204, 255);
+            border-width: 3px;
+            color: rgb(255, 0, 0);
+            font-family: verdana;
+            font-size: 15px;
+            border-color: rgb(255, 0, 0);
+            width: 70px;
+            height: 30px;
+            font-weight: bold;"/>
+
+<!--Inventory button. When clicked, shows the user what items they currently have.-->
+    <input type="button" 
+           value="Inventory" 
+           onclick="btn_displayInventory();"
+           style="
+            background-color: rgb(153, 204, 255);
+            border-width: 3px;
+            color: rgb(255, 0, 0);
+            font-family: verdana;
+            font-size: 15px;
+            border-color: rgb(255, 0, 0);
+            width: 90px;
+            height: 30px;"/>
+
+<!--Take button. When clicked, the user "picks up" the item and stores it in inventory.-->
+    <input type="button" 
+           value="Take" 
+           onclick="pickUpItem();"
+           style="
+            background-color: rgb(153, 204, 255);
+            border-width: 3px;
+            color: rgb(255, 0, 0);
+            font-family: verdana;
+            font-size: 15px;
+            border-color: rgb(255, 0, 0);
+            width: 65px;
+            height: 30px;"/>
+<!--Score chart button. When clicked, shows the user their current score.-->
+    <input type="button" 
+           value="Score Chart" 
+           onclick="btn_scoreLog();"
+           style="
+            background-color: rgb(153, 204, 255);
+            border-width: 3px;
+            color: rgb(255, 0, 0);
+            font-family: verdana;
+            font-size: 15px;
+            border-color: rgb(255, 0, 0);
+            width: 105px;
+            height: 30px;"/>
+
+<!--Help button. When clicked, shows the user instructions and a guide for when they're stuck.-->
+    <input type="button" 
+           value="Help" 
+           onclick="help();"
+           style="
+            background-color: rgb(153, 204, 255);
+            border-width: 3px;
+            color: rgb(255, 0, 0);
+            font-family: verdana;
+            font-size: 15px;
+            border-color: rgb(255, 0, 0);
+            width: 60px;
+            height: 30px;"/>
+
+    </br>
+  </br>
+    
+    <p style="color: rgb(255, 0, 0);
+              font-size: 25px;
+              font-family: verdana;
+              font-weight: bold;
+              text-align: center;">
+              Map:
+    </p>
+
+<!--map image-->
+    <img src="map.jpg" 
+        width="792" 
+        height="612" 
+        style="display: block; 
+                margin-left: auto; 
+                margin-right: auto;"
+        />
+    
+    </br>
+
+    <h1 style="
+        color: rgb(0, 0, 255); 
+        font-family: verdana; 
+        font-size: 20px;
+        text-decoration: underline;
+        ">
+         Email Me:
+      </h1>
+
+       <p style="color: rgb(255, 0, 0);"><strong>For any questions, please click the link below to reach me at my email.</strong></p>
+      <p style="color: rgb(255, 0, 0);">
+      To write to <a style="color: rgb(0, 0, 255);" href = "mailto:hannah.youssef1@marist.edu"><strong> Hannah Youssef</strong></a>, click the link and I will return your message as soon as possible.
+       </p>
+
+
+  <hr>
+
+    <p>All information on this site is <strong>&copy;
+      Hannah Youssef, 2016.</strong>
+    </p>
+
+  </body>
+</html>
