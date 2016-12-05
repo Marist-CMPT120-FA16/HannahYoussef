@@ -1,6 +1,6 @@
 //Hannah Youssef
-//November 21, 2016
-//Project 5
+//December 5, 2016
+//Final Project
 //game.js - controls the game's logic, inventory, and global variables
 
 var scoreChart = 500;
