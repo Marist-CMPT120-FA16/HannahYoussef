@@ -1,6 +1,6 @@
 //Hannah Youssef
-//November 21, 2016
-//Project 5
+//December 5, 2016
+//Final Project
 //navigation.js - controls the naviagtion in the game
 
 //declaring variables
